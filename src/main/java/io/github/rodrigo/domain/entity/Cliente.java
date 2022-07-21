@@ -1,5 +1,9 @@
 package io.github.rodrigo.domain.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table( name = "cliente" )
 public class Cliente {
     public Cliente() {
     }
@@ -13,7 +17,12 @@ public class Cliente {
         this.nome = nome;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "nome", length = 100)
     private String nome;
 
     public Integer getId() {
