@@ -39,7 +39,7 @@ public class VendasApplication {
             todosCLientes.forEach(System.out::println);
 
 
-            System.out.println("Atualizando Clientes");
+            /*System.out.println("Atualizando Clientes");
             todosCLientes.forEach(c -> {
                 c.setNome(c.getNome() + " atualizado.");
                 clientes.atualizar(c);
@@ -61,7 +61,7 @@ public class VendasApplication {
                 System.out.println("Nenhum cliente encontrado.");
             }else{
                 todosCLientes.forEach(System.out::println);
-            }
+            }*/
         };
     }
 
