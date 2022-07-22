@@ -1,5 +1,7 @@
 package io.github.rodrigo.domain.entity;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,7 +16,7 @@ public class Cliente {
     @Column(name = "nome", length = 100)
     private String nome;
 
-    @OneToMany( mappedBy = "cliente")
+    @OneToMany( mappedBy = "cliente", fetch = FetchType.LAZY)
     private Set<Pedido> pedidos;
 
     public Cliente() {

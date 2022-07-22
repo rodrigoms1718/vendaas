@@ -13,13 +13,13 @@ public class Pedido {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     @Column(name = "dataPedido")
     private LocalDate dataPedido;
 
-    @Column(name = "total", length = 20, precision = 2)
+    @Column(name = "total", precision = 20, scale = 2)
     private BigDecimal total;
 
     @OneToMany(mappedBy = "pedido")
@@ -63,5 +63,14 @@ public class Pedido {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", dataPedido=" + dataPedido +
+                ", total=" + total +
+                '}';
     }
 }
