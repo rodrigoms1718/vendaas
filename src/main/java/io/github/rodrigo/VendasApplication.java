@@ -35,7 +35,7 @@ public class VendasApplication {
 
             boolean existe = clientes.existsByNome("Rodrigo");
             System.out.println("Existe um cliente chamado Rodrigo? " + existe);
-            
+
         };
     }
 
