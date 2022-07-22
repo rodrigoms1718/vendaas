@@ -1,10 +1,8 @@
 package io.github.rodrigo;
 
-import ch.qos.logback.core.net.server.Client;
 import io.github.rodrigo.domain.entity.Cliente;
 import io.github.rodrigo.domain.repositorio.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -35,33 +33,33 @@ public class VendasApplication {
             clientes.save(new Cliente("Rodrigo"));
             clientes.save(new Cliente("Outro Cliente"));
 
-            List<Cliente> todosCLientes = clientes.findAll();
-            todosCLientes.forEach(System.out::println);
+            boolean existe = clientes.existsByNome("Rodrigo");
+            System.out.println("Existe um cliente chamado Rodrigo? " + existe);
 
 
-            System.out.println("Atualizando Clientes");
-            todosCLientes.forEach(c -> {
-                c.setNome(c.getNome() + " atualizado.");
-                clientes.save(c);
-            });
-
-            todosCLientes = clientes.findAll();
-            todosCLientes.forEach(System.out::println);
-
-            System.out.println("Buscando Clientes");
-            clientes.findByNomeLike("Cli").forEach(System.out::println);
-
-            System.out.println("Deletando Clientes");
-            clientes.findAll().forEach(c -> {
-                clientes.delete(c);
-            });
-
-            todosCLientes = clientes.findAll();
-            if(todosCLientes.isEmpty()){
-                System.out.println("Nenhum cliente encontrado.");
-            }else{
-                todosCLientes.forEach(System.out::println);
-            }
+//            System.out.println("Atualizando Clientes");
+//            todosCLientes.forEach(c -> {
+//                c.setNome(c.getNome() + " atualizado.");
+//                clientes.save(c);
+//            });
+//
+//            todosCLientes = clientes.findAll();
+//            todosCLientes.forEach(System.out::println);
+//
+//            System.out.println("Buscando Clientes");
+//            clientes.findByNomeLike("Cli").forEach(System.out::println);
+//
+//            System.out.println("Deletando Clientes");
+//            clientes.findAll().forEach(c -> {
+//                clientes.delete(c);
+//            });
+//
+//            todosCLientes = clientes.findAll();
+//            if(todosCLientes.isEmpty()){
+//                System.out.println("Nenhum cliente encontrado.");
+//            }else{
+//                todosCLientes.forEach(System.out::println);
+//            }
         };
     }
 
