@@ -1,7 +1,7 @@
 package io.github.rodrigo;
 
 import io.github.rodrigo.domain.entity.Cliente;
-import io.github.rodrigo.domain.repositorio.Clientes;
+import io.github.rodrigo.domain.repository.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
