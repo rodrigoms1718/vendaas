@@ -35,31 +35,7 @@ public class VendasApplication {
 
             boolean existe = clientes.existsByNome("Rodrigo");
             System.out.println("Existe um cliente chamado Rodrigo? " + existe);
-
-
-//            System.out.println("Atualizando Clientes");
-//            todosCLientes.forEach(c -> {
-//                c.setNome(c.getNome() + " atualizado.");
-//                clientes.save(c);
-//            });
-//
-//            todosCLientes = clientes.findAll();
-//            todosCLientes.forEach(System.out::println);
-//
-//            System.out.println("Buscando Clientes");
-//            clientes.findByNomeLike("Cli").forEach(System.out::println);
-//
-//            System.out.println("Deletando Clientes");
-//            clientes.findAll().forEach(c -> {
-//                clientes.delete(c);
-//            });
-//
-//            todosCLientes = clientes.findAll();
-//            if(todosCLientes.isEmpty()){
-//                System.out.println("Nenhum cliente encontrado.");
-//            }else{
-//                todosCLientes.forEach(System.out::println);
-//            }
+            
         };
     }
 
