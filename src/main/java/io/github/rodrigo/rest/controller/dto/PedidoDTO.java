@@ -1,6 +1,10 @@
 package io.github.rodrigo.rest.controller.dto;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,6 +20,9 @@ import java.util.List;
  *     ]
  * }
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class PedidoDTO {
 
     private Integer cliente;
