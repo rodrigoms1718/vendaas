@@ -1,7 +1,7 @@
 package io.github.rodrigo.rest.controller;
 
 import io.github.rodrigo.domain.entity.Pedido;
-import io.github.rodrigo.rest.controller.dto.PedidoDTO;
+import io.github.rodrigo.rest.dto.PedidoDTO;
 import io.github.rodrigo.service.PedidoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,5 +22,5 @@ public class PedidoController {
         Pedido pedido = service.salvar(dto);
         return pedido.getId();
     }
-    
+
 }

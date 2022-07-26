@@ -1,4 +1,4 @@
-package io.github.rodrigo.rest.controller.dto;
+package io.github.rodrigo.rest.dto;
 
 
 import lombok.AllArgsConstructor;
