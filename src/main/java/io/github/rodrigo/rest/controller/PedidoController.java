@@ -2,10 +2,13 @@ package io.github.rodrigo.rest.controller;
 
 import io.github.rodrigo.domain.entity.ItemPedido;
 import io.github.rodrigo.domain.entity.Pedido;
+import io.github.rodrigo.domain.enums.StatusPedido;
+import io.github.rodrigo.rest.dto.AtualizacaoStatusPedidoDTO;
 import io.github.rodrigo.rest.dto.InformacaoItemPedidoDTO;
 import io.github.rodrigo.rest.dto.InformacoesPedidoDTO;
 import io.github.rodrigo.rest.dto.PedidoDTO;
 import io.github.rodrigo.service.PedidoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,8 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 @RequestMapping("/api/pedidos")
@@ -41,6 +43,14 @@ public class PedidoController {
                 .map( p -> converter(p))
                 .orElseThrow( () ->
                         new ResponseStatusException(NOT_FOUND, "Pedido não encontrado"));
+    }
+
+    @PatchMapping("{id}")
+    @ResponseStatus(NO_CONTENT)
+    public void updateStatus(@PathVariable Integer id,
+                            @RequestBody AtualizacaoStatusPedidoDTO dto){
+        String novoStatus = dto.getNovoStatus();
+        service.atualizaStatus(id, StatusPedido.valueOf(novoStatus));
     }
 
     private InformacoesPedidoDTO converter(Pedido pedido){

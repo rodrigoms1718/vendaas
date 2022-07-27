@@ -9,6 +9,7 @@ import io.github.rodrigo.domain.repository.Clientes;
 import io.github.rodrigo.domain.repository.ItemsPedido;
 import io.github.rodrigo.domain.repository.Pedidos;
 import io.github.rodrigo.domain.repository.Produtos;
+import io.github.rodrigo.exception.PedidoNaoEncontradoException;
 import io.github.rodrigo.exception.RegraNegocioException;
 import io.github.rodrigo.rest.dto.ItemPedidoDTO;
 import io.github.rodrigo.rest.dto.PedidoDTO;
@@ -22,8 +23,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class PedidoServiceImpl implements PedidoService {
     private final Pedidos repository;
     private final Clientes clientesRepository;
@@ -55,6 +56,17 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Optional<Pedido> obterPedidoCompleto(Integer id) {
         return repository.findByIdFetchItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void atualizaStatus(Integer id, StatusPedido statusPedido) {
+        repository
+                .findById(id)
+                .map( pedido -> {
+                    pedido.setStatus(statusPedido);
+                    return repository.save(pedido);
+                }).orElseThrow( () -> new PedidoNaoEncontradoException());
     }
 
     private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items){
